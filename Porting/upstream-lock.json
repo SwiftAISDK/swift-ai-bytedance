@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "packages": [
+    {
+      "name": "@ai-sdk/bytedance",
+      "reviewedVersion": "2.0.71",
+      "ledgerKind": "provider",
+      "evidence": "`AIProviders.byteDance`, `ByteDanceVideoModel`, `AsyncVideoModel`, `ByteDanceProviderTests.swift`, `ByteDanceAsyncVideoUpstreamParityTests.swift`, `MediaStatusRedirectUpstreamTests.swift`",
+      "reviewStatus": "imported-reviewed-with-gaps",
+      "archiveIntegrity": "sha512-+hW2C9HDYqCks8JowYFg7MOtCHo0Pc+CGWCBgCy9mttR9CIht/3cs+HodOT4pUSRnXWlULQkoWMiANXOTW4ZTw==",
+      "sourceRef": "npm:@ai-sdk/bytedance@2.0.71",
+      "testRef": "682e2dd71456f14f9da33a1b983d1998c3a1184c",
+      "testRefRelationship": "inventory-snapshot-not-release-verified",
+      "contractFamilies": [],
+      "contractReview": "not-imported; inspect upstream declarations before extraction"
+    }
+  ]
+}

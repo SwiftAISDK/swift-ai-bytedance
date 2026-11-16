@@ -17,11 +17,13 @@
   ],
   "swift": {
     "sources": [
+      "Packages/swift-ai-bytedance/Sources/SwiftAIByteDance/ByteDanceImageModel.swift",
       "Packages/swift-ai-bytedance/Sources/SwiftAIByteDance/ByteDanceMediaModels.swift",
       "Packages/swift-ai-bytedance/Sources/SwiftAIByteDance/ByteDanceProvider.swift"
     ],
     "tests": [
       "Packages/swift-ai-bytedance/Tests/SwiftAIByteDanceTests/ByteDanceAsyncVideoUpstreamParityTests.swift",
+      "Packages/swift-ai-bytedance/Tests/SwiftAIByteDanceTests/ByteDanceImageAndReferenceUpstreamTests.swift",
       "Packages/swift-ai-bytedance/Tests/SwiftAIByteDanceTests/ByteDanceProviderTests.swift",
       "Packages/swift-ai-bytedance/Tests/SwiftAIByteDanceTests/FixtureDownloadTransport.swift",
       "Packages/swift-ai-bytedance/Tests/SwiftAIByteDanceTests/TestSupport.swift"
@@ -32,7 +34,11 @@
     {
       "kind": "native-adaptation",
       "reason": "Preserve Swift async/await, Sendable, Foundation transport and existing documented gaps; see Docs/CoreV6Parity.md and PortingStatus.md."
+    },
+    {
+      "kind": "native-adaptation",
+      "reason": "2026-11-15: reviewed @ai-sdk/bytedance 2.0.85 -> 2.0.86 with integrity-verified archives and exact matching-release tests. Source, declarations, changed scenarios and explicit remaining gaps are recorded in Docs/WeeklyUpstreamAudit20261115.json; no full-package or paid/live-service parity claim."
     }
   ],
-  "reviewNote": "M6: provider runtime, configuration and focused tests extracted. Existing upstream baseline, capability boundaries and gaps retained."
+  "reviewNote": "2026-11-08: published @ai-sdk/bytedance 2.0.75..2.0.80 source, declarations and matching-release tests reviewed independently. Only test/declaration/internal catalog extraction changes; explicit seed zero was already native. Delta review is not a claim of whole-provider parity; existing documented gaps remain."
 }

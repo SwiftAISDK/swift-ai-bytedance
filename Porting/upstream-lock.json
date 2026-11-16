@@ -3,16 +3,20 @@
   "packages": [
     {
       "name": "@ai-sdk/bytedance",
-      "reviewedVersion": "2.0.71",
+      "reviewedVersion": "2.0.86",
       "ledgerKind": "provider",
-      "evidence": "`AIProviders.byteDance`, `ByteDanceVideoModel`, `AsyncVideoModel`, `ByteDanceProviderTests.swift`, `ByteDanceAsyncVideoUpstreamParityTests.swift`, `MediaStatusRedirectUpstreamTests.swift`",
+      "evidence": "`AIProviders.byteDance`, `ByteDanceVideoModel`, `AsyncVideoModel`, `ByteDanceProviderTests.swift`, `ByteDanceAsyncVideoUpstreamParityTests.swift`, `MediaStatusRedirectUpstreamTests.swift`; 2026-11-01 delta: Docs/Archive/WeeklyUpstreamAudit20261101.json; 2026-11-08 delta: Docs/Archive/WeeklyUpstreamAudit20261108.json; 2026-11-14 delta: Docs/Archive/WeeklyUpstreamAudit20261114.json; 2026-11-15 delta: Docs/Archive/WeeklyUpstreamAudit20261115.json",
       "reviewStatus": "imported-reviewed-with-gaps",
-      "archiveIntegrity": "sha512-+hW2C9HDYqCks8JowYFg7MOtCHo0Pc+CGWCBgCy9mttR9CIht/3cs+HodOT4pUSRnXWlULQkoWMiANXOTW4ZTw==",
-      "sourceRef": "npm:@ai-sdk/bytedance@2.0.71",
-      "testRef": "682e2dd71456f14f9da33a1b983d1998c3a1184c",
-      "testRefRelationship": "inventory-snapshot-not-release-verified",
-      "contractFamilies": [],
-      "contractReview": "not-imported; inspect upstream declarations before extraction"
+      "archiveIntegrity": "sha512-FydDCwFGsylQtwe+HK6OGb5owEJ0a6s6BnTdpgTQMJJKRUevi1Qyx64enLhdtp/mwJQAk/K6m4DmlwM8sSXC1w==",
+      "sourceRef": "npm:@ai-sdk/bytedance@2.0.86",
+      "testRef": "0e8e0543aeda7d4dd4ce6eade0d5b7d5a43644c1",
+      "testRefRelationship": "matching-release",
+      "contractFamilies": [
+        "ImageModelV4",
+        "ProviderV4",
+        "VideoModelV4"
+      ],
+      "contractReview": "2026-11-15: published source/declarations and exact matching-release tests reviewed separately. Native delta scenarios, per-file dispositions, unchanged-catalog evidence and explicit remaining gaps are recorded in Docs/Archive/WeeklyUpstreamAudit20261115.json. Required checks remain a separate gate; no full-package/live-service parity claim."
     }
   ]
 }

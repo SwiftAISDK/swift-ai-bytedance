@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "package": "swift-ai-bytedance",
-  "version": "1.0.0",
-  "releaseID": "modular-3",
+  "version": "1.1.0",
+  "releaseID": "upstream-parity-20261116",
   "source": {
-    "commit": "7fc9b4cd72f8f83b75ba7eee2e38d37127539317",
-    "baseCommit": "7fc9b4cd72f8f83b75ba7eee2e38d37127539317",
+    "commit": "1c457dea36be42376a6853aecd5c48ffc4942178",
+    "baseCommit": "1c457dea36be42376a6853aecd5c48ffc4942178",
     "workingTree": false,
-    "inputsSHA256": "49b802ba4a30454f78c9886ab3114537ef659ab3e6db7775479b7351f6e3f0ab"
+    "inputsSHA256": "d7b8f52add7828d7e9ed20418fe072e7db03e75483a168bb7f5c34e9d2a04a13"
   },
   "dependencies": [
     {
@@ -17,25 +17,29 @@
   ],
   "changes": [
     {
-      "id": "remaining-package-extraction",
-      "notes": "Extract the existing runtime, typed settings and standalone tests from the compatibility aggregate. Preserve the reviewed npm baseline and existing capability/gap boundaries.",
-      "compatibility": "Initial independent Swift package version. Existing SwiftAISDK entry points remain in the development compatibility facade; no npm-version equivalence is implied."
+      "id": "upstream-parity-20261116",
+      "notes": "Adds the Seedream `ByteDanceImageModel`; video references are routed by media type; the stale user-agent suffix is removed.",
+      "compatibility": "Source-compatible; changes are additive. Request bodies, results, warnings and errors change to match the reviewed upstream package."
     }
   ],
   "canonicalDirectory": "Packages/swift-ai-bytedance",
   "upstream": [
     {
       "name": "@ai-sdk/bytedance",
-      "reviewedVersion": "2.0.71",
+      "reviewedVersion": "2.0.86",
       "ledgerKind": "provider",
-      "evidence": "`AIProviders.byteDance`, `ByteDanceVideoModel`, `AsyncVideoModel`, `ByteDanceProviderTests.swift`, `ByteDanceAsyncVideoUpstreamParityTests.swift`, `MediaStatusRedirectUpstreamTests.swift`",
+      "evidence": "`AIProviders.byteDance`, `ByteDanceVideoModel`, `AsyncVideoModel`, `ByteDanceProviderTests.swift`, `ByteDanceAsyncVideoUpstreamParityTests.swift`, `MediaStatusRedirectUpstreamTests.swift`; 2026-11-01 delta: Docs/Archive/WeeklyUpstreamAudit20261101.json; 2026-11-08 delta: Docs/Archive/WeeklyUpstreamAudit20261108.json; 2026-11-14 delta: Docs/Archive/WeeklyUpstreamAudit20261114.json; 2026-11-15 delta: Docs/Archive/WeeklyUpstreamAudit20261115.json",
       "reviewStatus": "imported-reviewed-with-gaps",
-      "archiveIntegrity": "sha512-+hW2C9HDYqCks8JowYFg7MOtCHo0Pc+CGWCBgCy9mttR9CIht/3cs+HodOT4pUSRnXWlULQkoWMiANXOTW4ZTw==",
-      "sourceRef": "npm:@ai-sdk/bytedance@2.0.71",
-      "testRef": "682e2dd71456f14f9da33a1b983d1998c3a1184c",
-      "testRefRelationship": "inventory-snapshot-not-release-verified",
-      "contractFamilies": [],
-      "contractReview": "not-imported; inspect upstream declarations before extraction"
+      "archiveIntegrity": "sha512-FydDCwFGsylQtwe+HK6OGb5owEJ0a6s6BnTdpgTQMJJKRUevi1Qyx64enLhdtp/mwJQAk/K6m4DmlwM8sSXC1w==",
+      "sourceRef": "npm:@ai-sdk/bytedance@2.0.86",
+      "testRef": "0e8e0543aeda7d4dd4ce6eade0d5b7d5a43644c1",
+      "testRefRelationship": "matching-release",
+      "contractFamilies": [
+        "ImageModelV4",
+        "ProviderV4",
+        "VideoModelV4"
+      ],
+      "contractReview": "2026-11-15: published source/declarations and exact matching-release tests reviewed separately. Native delta scenarios, per-file dispositions, unchanged-catalog evidence and explicit remaining gaps are recorded in Docs/Archive/WeeklyUpstreamAudit20261115.json. Required checks remain a separate gate; no full-package/live-service parity claim."
     }
   ],
   "note": "Independent port. Imported test refs and contract review gaps retain their original status; export is not new upstream parity proof.",
@@ -54,27 +58,35 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-bytedance/Porting/map.json",
-      "sha256": "e119ca37120d5028071c4db2ec808e2e6e97ca0316316852a8d690ac9f78a0a7"
+      "sha256": "c427d2a8a042fd77f12ec103d9dc9abae728b241bd1df4353f439722850a1dbf"
     },
     {
       "canonicalPath": "Packages/swift-ai-bytedance/README.md",
-      "sha256": "53a04b2ecd8d6722edbfa9179c009f2364842010d8cb3046e27e2906419c1d8b"
+      "sha256": "9fe4354c0a0530eaf87134dbe33699c93c1d571831a094504074223727971888"
+    },
+    {
+      "canonicalPath": "Packages/swift-ai-bytedance/Sources/SwiftAIByteDance/ByteDanceImageModel.swift",
+      "sha256": "e505159921cfa0165f4a7f658300d02c04ddb6d84386340c14bcfdad8563f7d0"
     },
     {
       "canonicalPath": "Packages/swift-ai-bytedance/Sources/SwiftAIByteDance/ByteDanceMediaModels.swift",
-      "sha256": "bfe948e184bed1e31858ba341228fbbb61e8ce7f00c73a495342af889c601e87"
+      "sha256": "3d451846f00a8e9abb7f9b5891839a9f27990715313a8056c5162d10d61987c4"
     },
     {
       "canonicalPath": "Packages/swift-ai-bytedance/Sources/SwiftAIByteDance/ByteDanceProvider.swift",
-      "sha256": "9a2e4aa0cef9042449f62f9e48f1e020ef1ed8a230f94209405a92b2007040a5"
+      "sha256": "4bfa2860fa086ec143ac762a24afe39789959e5f082dfaacf20ded671cf8184f"
     },
     {
       "canonicalPath": "Packages/swift-ai-bytedance/Tests/SwiftAIByteDanceTests/ByteDanceAsyncVideoUpstreamParityTests.swift",
       "sha256": "e2f669dbf4999220214f65b6edeeaa7d11be918313c8c59ba2a1b1fae79347eb"
     },
     {
+      "canonicalPath": "Packages/swift-ai-bytedance/Tests/SwiftAIByteDanceTests/ByteDanceImageAndReferenceUpstreamTests.swift",
+      "sha256": "5937226112f50faf1a8905533f590eceb759e33a013009d9f279a5bfe5b7d868"
+    },
+    {
       "canonicalPath": "Packages/swift-ai-bytedance/Tests/SwiftAIByteDanceTests/ByteDanceProviderTests.swift",
-      "sha256": "25fdf820f6b26687601f16ec97bf2755e4fb4af628d9419e164685c981842650"
+      "sha256": "afc214104646e647337af5f0873d10e669e17620ed546abafef9375494920657"
     },
     {
       "canonicalPath": "Packages/swift-ai-bytedance/Tests/SwiftAIByteDanceTests/FixtureDownloadTransport.swift",

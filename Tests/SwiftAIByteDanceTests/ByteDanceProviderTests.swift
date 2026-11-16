@@ -36,7 +36,7 @@ import Testing
     }
 }
 
-@Test func byteDanceVideoSubmitsPollsAndPreservesMetadata() async throws {
+@Test(arguments: [0, 11]) func byteDanceVideoSubmitsPollsAndPreservesMetadata(seed: Int) async throws {
     let transport = RecordingTransport(responses: [
         jsonResponse(#"{"id":"task-1"}"#),
         jsonResponse(
@@ -52,7 +52,7 @@ import Testing
         aspectRatio: "16:9",
         durationSeconds: 4,
         resolution: "1920x1080",
-        seed: 11,
+        seed: seed,
         providerOptions: [
             "bytedance": .object([
                 "serviceTier": "flex"
@@ -80,7 +80,8 @@ import Testing
     #expect(requests[0].method == "POST")
     #expect(requests[0].url.absoluteString == "https://ark.ap-southeast.bytepluses.com/api/v3/contents/generations/tasks")
     #expect(requests[0].headers["authorization"] == "Bearer ark-key")
-    #expect(requests[0].headers["user-agent"] == "ai-sdk/bytedance/2.0.71")
+    // Upstream 2.0.86 adds no provider suffix; only the transport default remains.
+    #expect(requests[0].headers["user-agent"] == "SwiftAISDK/bytedance")
     #expect(requests[0].headers["x-request-id"] == "req-1")
     let body = try decodeJSONBody(try #require(requests[0].body))
     #expect(body["model"]?.stringValue == "seedance-1-0-pro-250528")
@@ -88,14 +89,14 @@ import Testing
     #expect(body["content"]?[0]?["text"]?.stringValue == "cat running")
     #expect(body["ratio"]?.stringValue == "16:9")
     #expect(body["duration"]?.intValue == 4)
-    #expect(body["seed"]?.intValue == 11)
+    #expect(body["seed"]?.intValue == seed)
     #expect(body["resolution"]?.stringValue == "1080p")
     #expect(body["service_tier"]?.stringValue == "flex")
     #expect(body["openai"] == nil)
     #expect(requests[1].method == "GET")
     #expect(requests[1].url.absoluteString == "https://ark.ap-southeast.bytepluses.com/api/v3/contents/generations/tasks/task-1")
     #expect(requests[1].headers["authorization"] == "Bearer ark-key")
-    #expect(requests[1].headers["user-agent"] == "ai-sdk/bytedance/2.0.71")
+    #expect(requests[1].headers["user-agent"]?.contains("ai-sdk/bytedance") != true)
     #expect(requests[1].headers["x-request-id"] == "req-1")
 }
 
@@ -599,7 +600,7 @@ import Testing
         #expect(Bool(false), "Expected failed ByteDance task to throw")
     } catch AIError.invalidResponse(let provider, let message) {
         #expect(provider == "bytedance.video")
-        #expect(message.hasPrefix("Video generation failed: "))
+        #expect(message.hasPrefix("Video generation failed. Task ID: task-failed. "))
         #expect(message.contains(#""status":"failed""#))
         #expect(message.contains(#""id":"task-failed""#))
     } catch {
